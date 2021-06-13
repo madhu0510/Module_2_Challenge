@@ -9,9 +9,10 @@ Example:
 import sys
 import fire
 import questionary
+
 from pathlib import Path
 
-from qualifier.utils.fileio import load_csv
+from qualifier.utils.fileio import load_csv,save_csv
 
 from qualifier.utils.calculators import (
     calculate_monthly_debt_ratio,
@@ -109,8 +110,13 @@ def save_qualifying_loans(qualifying_loans):
         qualifying_loans (list of lists): The qualifying bank loans.
     """
     # @TODO: Complete the usability dialog for savings the CSV Files.
-    # YOUR CODE HERE!
+    response = questionary.text("Do you want to save your qualifying loans? ").ask()
 
+    # if response is yes then ask for csv file path
+    if response == 'yes':
+        csv_path = questionary.text("Enter a csv file path: ").ask()
+        csv_path = Path(csv_path)
+        save_csv(qualifying_loans,csv_path)
 
 def run():
     """The main function for running the script."""
