@@ -29,10 +29,17 @@ def load_csv(csvpath):
             data.append(row)
     return data
 
-def save_csv(qualifying_data,csv_path):
+def save_csv(csv_data,csv_path):
+    """Saves the CSV file to path provided.
+
+        Args:
+            csv_path (Path): The csv file path.
+            csv_data : Data to be saved to csv file
+
+    """
     with open(csv_path,'w',newline='') as f:
         csvwriter = csv.writer(f)
                 
         # Write Qualifying Data
-        for data in qualifying_data:
+        for data in csv_data:
                 csvwriter.writerow(data)
