@@ -1,6 +1,12 @@
 # Loan Qualifier Application
 
-This is a python command-line interface application that allows users to see qualifying loans from lenders quickly and easily. The application works by that taking in a `daily_rate_sheet` of loan criteria from various loan providers, asks the user a number of questions to evaluate their loan eligibility, and then returns to them a list of qualifying loans.
+This is a python CLI (command-line interface) application which allows users to see qualifying loans from lenders quickly and easily. 
+
+---
+## Project Features
+* The application uses `daily_rate_sheet` which contains loan criteria from various loan providers
+* It asks any user a number of questions to evaluate their loan eligibility and returns them a list of qualifying loans.
+* The application also asks the user to if the user wants to save the results as a CSV file and save the file to local disk based on the response.  
 
 ---
 
@@ -44,10 +50,46 @@ Upon launching the loan qualifier application you will be greeted with the follo
 
 
 ---
+## Functions used in the application with examples
+
+* load_bank_data: This function is used to load bank data from the data rate sheet CSV file.
+
+  Example:
+  ```
+  bank_data = load_bank_data()
+  ```
+
+* get_applicant_info: This function prompt dialog to get the applicant's financial information.
+
+  Example:
+  ```
+  credit_score, debt, income, loan_amount, home_value = get_applicant_info()
+  ```
+
+* find_qualifying_loans: This function is used to determine which loans the user qualifies for based on Credit Score, Loan Size,Debit to Income ratio (calculated),Loan to Value ratio (calculated).
+
+  Example:
+  ```
+  qualifying_loans = find_qualifying_loans(bank_data, credit_score, debt, income, loan_amount, home_value)
+  ```
+
+* save_qualifying_loans: This function saves the qualifying loans to a CSV file.
+
+  Example:
+
+  ```
+  save_qualifying_loans(qualifying_loans)
+  ```
+* save_csv: This is a newly added helper function in fileio module which saves the file to specific path.
+  Example:
+  ```
+  save_csv(qualifying_loans,csv_path)
+  ```
+---
 
 ## Contributors
 
-Brought to you by ET Home Loans.
+Madhumita
 
 ---
 
